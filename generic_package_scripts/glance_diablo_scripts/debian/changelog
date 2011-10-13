@@ -1,0 +1,165 @@
+glance (2011.3-0ubuntu1) oneiric; urgency=low
+
+  * New upstream release. 
+  * debian/glance.postinst: Add glance group and add glance user to it.
+    (LP: #851860)
+
+ -- Chuck Short <zulcss@ubuntu.com>  Thu, 22 Sep 2011 10:45:33 -0400
+
+glance (2011.3~rc~20110915.r1007-0ubuntu1) oneiric; urgency=low
+
+  [ Chuck Short ]
+  * New upstream release. 
+  * debian/rules: Dont fail to build because of broken testsuite.
+
+  [ Monty Taylor ]
+  * Added branch condition to fix build on lucid.
+
+ -- Monty Taylor <mordred@inaugust.com>  Mon, 19 Sep 2011 13:03:41 -0400
+
+glance (2011.3~rc~20110908.r1005-0ubuntu1) oneiric; urgency=low
+
+  * New upstream release. 
+
+ -- Chuck Short <zulcss@ubuntu.com>  Fri, 09 Sep 2011 14:59:27 -0400
+
+glance (2011.3~rc~20110831.1002-0ubuntu1) oneiric; urgency=low
+
+  * New upstream release. 
+
+ -- Chuck Short <zulcss@ubuntu.com>  Fri, 02 Sep 2011 13:50:13 -0400
+
+glance (2011.3~d4-0ubuntu1) oneiric; urgency=low
+
+  [Chuck Short]
+  * New upstream release.
+
+  [ Monty Taylor ]
+  * New upstream release.
+  * Added python-kombu as Depends and Build-depends.
+
+  [ Scott Moser ]
+  * glance.postinst: use a trailing slash when using chown on directories
+  
+  [ Ben Howard ]
+  * Install /etc/glance-scrubber.conf by default (LP: #816972)
+  * Remove glance user and logs on purge (LP: #828721)
+  * Converted dh to use "--with python2".
+  * Incremented standards version to 3.9.2; no changes required
+
+ -- Chuck Short <zulcss@ubuntu.com>  Fri, 26 Aug 2011 10:13:39 -0400
+
+glance (2011.3~d4~20110811.980-0ubuntu1) oneiric; urgency=low
+
+  * New upstream release. 
+
+ -- Chuck Short <zulcss@ubuntu.com>  Fri, 12 Aug 2011 05:23:21 -0400
+
+glance (2011.3~d3~20110709.152-0ubuntu2) UNRELEASED; urgency=low
+
+  [ Adam Gandelman ]
+  * Add python-xattr to Depends of python-glance
+
+  [ Jay Pipes ]
+  * Add python-boto to Build-depends.
+
+  [ Dan Prince ]
+  * Updates to support glance caching config files and directories.
+
+ -- Monty Taylor <mordred@inaugust.com>  Tue, 02 Aug 2011 08:55:11 -0700
+
+glance (2011.3~d3~20110709.152-0ubuntu1) UNRELEASED; urgency=low
+
+  * New upstream snapshot.
+  * Remove python-daemon as a dependency again.
+  * Make Vcs-* headers point to the packaging trunk (instead of the
+    natty branch).
+
+ -- Soren Hansen <soren@ubuntu.com>  Tue, 12 Jul 2011 21:57:41 +0200
+
+glance (2011.3~d3~20110707.151-0ubuntu1) oneiric; urgency=low
+
+  * New upstream release.
+  * debian/control: python-hashlib
+
+ -- Chuck Short <zulcss@ubuntu.com>  Fri, 08 Jul 2011 12:59:49 -0400
+
+glance (2011.3~d2-0ubuntu2) oneiric; urgency=low
+
+  * debian/control: Add python-httplib2. 
+
+ -- Chuck Short <zulcss@ubuntu.com>  Thu, 30 Jun 2011 17:42:46 +0100
+
+glance (2011.3~d2-0ubuntu1) oneiric; urgency=low
+
+  [Chuck Short]
+  * New upstream release.
+  
+  [Adam Gandelman]
+  * Remove shell redirects in upstart jobs to ensure correct permissions
+    on logfiles. (LP: #784837)
+
+ -- Chuck Short <zulcss@ubuntu.com>  Thu, 30 Jun 2011 17:20:19 +0100
+
+glance (2011.3~d1-0ubuntu2) UNRELEASED; urgency=low
+
+  *  debian/control: Dropped python-daemon, its not used anywhere.
+
+ -- Chuck Short <zulcss@ubuntu.com>  Thu, 23 Jun 2011 15:37:22 -0400
+
+glance (2011.3~d1-0ubuntu1) oneiric; urgency=low
+
+  * New Upstream release.
+
+ -- Chuck Short <zulcss@ubuntu.com>  Thu, 02 Jun 2011 09:38:43 -0400
+
+glance (2011.2~bzr132-0ubuntu1) oneiric; urgency=low
+
+  [ Soren Hansen ]
+  * Fix accidentally inverted logic that protects against upgrading
+    shared databases.
+  * Fix the call that is supposed to upgrade the sqlite database.
+  * Make sure python modules are completely configured once python-
+    glance's postinst is done. (LP: #778463)
+  * Make sure doc/build exists once we try to build docs. We remove it
+    on clean, and older versions of sphinx do not make sure to create
+    it.
+
+  [ Dan Prince ]
+  * Add support for DEB_BUILD_OPTIONS=nocheck,nodocs.
+  * Updated to support new glance-api.conf and glance-registry.conf files.
+  * Updated log file locations in the upstart scripts to match new config
+    file defaults.
+
+ -- Soren Hansen <soren@ubuntu.com>  Wed, 25 May 2011 15:57:15 +0200
+
+glance (2011.2-0ubuntu1) natty; urgency=low
+
+  * New upstream version. 
+
+ -- Chuck Short <zulcss@ubuntu.com>  Fri, 15 Apr 2011 08:18:16 -0400
+
+glance (2011.2~bzr108-0ubuntu1) natty; urgency=low
+
+  [ Soren Hansen ]
+  * Run test suite during build
+  * Add pep8 as a build-dependency.
+  * Add python-{daemon,eventlet,sqlalchemy} as dependencies of python-
+    glance. Add python-argparse as a dependency of glance.
+  * Add dependency on python-pastedeploy and python-migrate.
+  * Remove deps on Twisted and gflags.
+  * Add curl to build-depends. The test suite needs it.
+  * Add dep on python-argparse.
+  * Build-depend on python-swift. The test suite needs the Swift client.
+  * Install glance-api and glance-registry upstart jobs. (LP: #757404)
+  * Create and chown /var/log/glance directory on install.
+  * Install sample config by default.
+  * Create db on install.
+
+ -- Chuck Short <zulcss@ubuntu.com>  Tue, 12 Apr 2011 09:52:06 -0400
+
+glance (0.1.3pre~bzr39-0ubuntu1) natty; urgency=low
+
+  * Initial upload.
+
+ -- Soren Hansen <soren@ubuntu.com>  Wed, 19 Jan 2011 12:01:32 +0100

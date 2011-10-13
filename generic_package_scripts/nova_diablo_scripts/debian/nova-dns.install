@@ -1,0 +1,2 @@
+usr/bin/nova-dns
+etc/nova/api-paste.ini

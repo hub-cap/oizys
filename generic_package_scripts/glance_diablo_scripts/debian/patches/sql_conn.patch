@@ -1,0 +1,27 @@
+Index: glance-2011.2~bzr108/etc/glance.conf.sample
+===================================================================
+--- glance-2011.2~bzr131.orig/etc/glance-registry.conf
++++ glance-2011.2~bzr131/etc/glance-registry.conf
+@@ -18,7 +18,7 @@
+ # SQLAlchemy connection string for the reference implementation
+ # registry server. Any valid SQLAlchemy connection string is fine.
+ # See: http://www.sqlalchemy.org/docs/05/reference/sqlalchemy/connections.html#sqlalchemy.create_engine
+-sql_connection = sqlite:///glance.sqlite
++sql_connection = sqlite:////var/lib/glance/glance.sqlite
+ 
+ # Period in seconds after which SQLAlchemy should reestablish its connection
+ # to the database.
+
+=== modified file 'etc/glance-scrubber.conf'
+--- org/etc/glance-scrubber.conf	2011-07-29 09:43:22 +0000
++++ new/etc/glance-scrubber.conf	2011-08-11 14:47:55 +0000
+@@ -21,7 +21,7 @@
+ # SQLAlchemy connection string for the reference implementation
+ # registry server. Any valid SQLAlchemy connection string is fine.
+ # See: http://www.sqlalchemy.org/docs/05/reference/sqlalchemy/connections.html#sqlalchemy.create_engine
+-sql_connection = sqlite:///glance.sqlite
++sql_connection = sqlite:////var/lib/glance/glance.sqlite
+ 
+ # Period in seconds after which SQLAlchemy should reestablish its connection
+ # to the database.
+

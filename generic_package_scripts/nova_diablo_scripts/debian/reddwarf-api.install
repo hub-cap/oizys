@@ -1,0 +1,4 @@
+usr/bin/reddwarf-api
+etc/nova/reddwarf-api-paste.ini
+usr/bin/reddwarf-cli
+usr/bin/reddwarf-manage

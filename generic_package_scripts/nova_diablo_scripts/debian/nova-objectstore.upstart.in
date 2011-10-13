@@ -1,0 +1,22 @@
+description "Nova object store"
+author "Soren Hansen <soren@linux2go.dk>"
+
+start on (filesystem and net-device-up IFACE!=lo)
+stop on runlevel [016]
+
+chdir /var/run
+
+pre-start script
+    mkdir -p /var/run/nova
+    chown nova:root /var/run/nova/
+
+	mkdir -p /var/lock/nova
+	chown nova:root /var/lock/nova/
+end script
+
+script
+    PIDFILE=/var/run/nova/nova-objectstore.pid
+    uid="$(getent passwd nova | cut -f3 -d:)"
+    gid="$(getent passwd nova | cut -f4 -d:)"
+    nova-objectstore --uid $uid --gid $gid --pidfile $PIDFILE --flagfile=/etc/nova/nova.conf --nodaemon --logfile=/var/log/nova/nova-objectstore.log
+end script

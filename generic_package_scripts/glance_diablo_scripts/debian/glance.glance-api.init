@@ -1,0 +1,76 @@
+#! /bin/sh
+### BEGIN INIT INFO
+# Provides:          glance-api
+# Required-Start:    $remote_fs $syslog
+# Required-Stop:     $remote_fs $syslog
+# Default-Start:     2 3 4 5
+# Default-Stop:      0 1 6
+# Short-Description: glance-api server
+# Description:       frontend API server for Glance
+### END INIT INFO
+
+
+set -e
+
+DAEMON=/usr/bin/glance-api
+DAEMON_ARGS="--config-file=/etc/glance/glance-api.conf"
+PIDFILE=/var/run/glance/glance-api.pid
+
+ENABLED=true
+
+if test -f /etc/default/glance-api; then
+  . /etc/default/glance-api
+fi
+
+mkdir -p /var/run/glance
+chown glance:root /var/run/glance/
+
+mkdir -p /var/lock/glance
+chown glance:root /var/lock/glance/
+
+uid="$(getent passwd glance | cut -f3 -d:)"
+gid="$(getent passwd glance | cut -f4 -d:)"
+
+. /lib/lsb/init-functions
+
+export PATH="${PATH:+$PATH:}/usr/sbin:/sbin"
+
+if ! [ -x ${DAEMON} ] ; then
+	exit 0
+fi
+
+case "$1" in
+  start)
+    test "$ENABLED" = "true" || exit 0
+    log_daemon_msg "Starting glance api" "glance-api"
+    start-stop-daemon --start --chdir /var/run --chuid ${uid}:${gid} -b -m --pidfile ${PIDFILE} --exec ${DAEMON} -- ${DAEMON_ARGS}
+    log_end_msg $?
+    ;;
+  stop)
+    test "$ENABLED" = "true" || exit 0
+    log_daemon_msg "Stopping glance api" "glance-api"
+    start-stop-daemon --stop --oknodo --pidfile ${PIDFILE}
+    log_end_msg $?
+    ;;
+  # Could we implement a reload if the daemon traps the -HUP signal? This would be done with:
+  # reload)
+  #   start-stop-daemon --stop --signal HUP --pidfile ${PID_FILE}
+  #   ;;
+  restart|force-reload)
+    test "$ENABLED" = "true" || exit 1
+    $0 stop
+    sleep 1
+    $0 start
+    ;;
+  status)
+    test "$ENABLED" = "true" || exit 0
+    # This is to be fixed: it doesn't exist in Debian
+    status_of_proc -p $PIDFILE $DAEMON glance-api && exit 0 || exit $?
+    ;;
+  *)
+    log_action_msg "Usage: /etc/init.d/glance-api {start|stop|restart|force-reload|status}"
+    exit 1
+    ;;
+esac
+
+exit 0
