@@ -1,4 +1,4 @@
-glance (2011.3) oneiric; urgency=low
+glance (2011.3-JENKINS_REVNO) oneiric; urgency=low
 
   * New upstream release. 
   * debian/glance.postinst: Add glance group and add glance user to it.

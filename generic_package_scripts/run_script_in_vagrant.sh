@@ -13,7 +13,7 @@ vagrant_ssh /vagrant/initialize.sh
 vagrant_ssh /vagrant/package_nova.sh $1
 vagrant_ssh mv /home/vagrant/nova/nova_debs.tgz /vagrant
 
-vagrant_ssh /vagrant/package_glance.sh
+vagrant_ssh /vagrant/package_glance.sh $1
 vagrant_ssh mv /home/vagrant/glance/glance_debs.tgz /vagrant
 
 vagrant_ssh /vagrant/package_novaclient.sh
