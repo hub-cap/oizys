@@ -43,6 +43,7 @@ Depends: ${python:Depends}, ${misc:Depends},
  python-argparse,
  python-migrate,
  python-kombu,
+ python-httplib2,
  python-xattr
 Provides: ${python:Provides}
 XB-Python-Version: ${python:Versions}
