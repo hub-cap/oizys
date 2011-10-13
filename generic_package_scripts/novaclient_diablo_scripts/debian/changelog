@@ -1,0 +1,61 @@
+python-novaclient (2.6.4~bzr113) oneiric; urgency=low
+
+  * New upstream release.
+  * Put in a branching condition in debian/rules to allow for lucid build.
+
+ -- Monty Taylor <mordred@inaugust.com>  Fri, 16 Sep 2011 15:34:20 -0400
+
+python-novaclient (2.6.4~bzr110-0ubuntu1) oneiric; urgency=low
+
+  * New upstream release.
+    - Fix FTBFS.
+    - Don't install tests with binary. LP: #838298
+  * debian/control: Add Vcs-Browser and Vcs-Bzr control fields.
+
+ -- Robie Basak <robie.basak@ubuntu.com>  Tue, 06 Sep 2011 10:14:21 +0100
+
+python-novaclient (2.6.4~bzr106-0ubuntu1) oneiric; urgency=low
+
+  * New upstream release.
+
+ -- Robie Basak <robie.basak@ubuntu.com>  Fri, 02 Sep 2011 16:09:49 +0100
+
+python-novaclient (2.6.1~bzr78-0ubuntu1) oneiric; urgency=low
+
+  [ Chuck Short ]
+  * New upstream version. 
+
+  [ James Page ]
+  * Updates to support Ubuntu MIR (LP: #825127):
+    - debian/rules:
+      - Completed dh_python2 transition.
+      - Enabled test suite.
+    - debian/control:
+      - Bumped Standards-Version: 3.9.2, no changes.
+
+ -- Chuck Short <zulcss@ubuntu.com>  Fri, 26 Aug 2011 14:02:03 -0400
+
+python-novaclient (2.6.1~bzr74-0ubuntu1) oneiric; urgency=low
+
+  [ Dave Walker (Daviey) ]
+  * New upstream snapshot.
+
+  [ Monty Taylor ]
+  * Update packaging to use debhelper v7.
+  * Bump python-all build-dep down to just 2.6.
+
+ -- Dave Walker (Daviey) <DaveWalker@ubuntu.com>  Tue, 09 Aug 2011 14:36:37 +0100
+
+python-novaclient (2.5.9~bzr65-0ubuntu1) oneiric; urgency=low
+
+  * New upstream release.
+  * debian/watch: Add url for python-novaclient.
+  * dh_python2 transition.
+
+ -- Chuck Short <zulcss@ubuntu.com>  Tue, 02 Aug 2011 14:28:50 -0400
+
+python-novaclient (2.4-0ubuntu1) natty; urgency=low
+
+  * Initial upload (FFe LP: #732461)
+
+ -- Thierry Carrez (ttx) <thierry@openstack.org>  Wed, 09 Mar 2011 13:54:33 +0100
