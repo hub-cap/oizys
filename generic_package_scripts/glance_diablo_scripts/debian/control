@@ -58,7 +58,7 @@ Description: OpenStack Image Registry and Delivery Service - Python library
 Package: glance
 Architecture: all
 Section: python
-Depends: ${python:Depends}, ${misc:Depends}, python-glance (= ${source:Version}), adduser, python-argparse
+Depends: ${python:Depends}, ${misc:Depends}, python-glance (= ${source:Version}), adduser, python-argparse, python-mysqldb
 Description: OpenStack Image Registry and Delivery Service - Daemons
  The Glance project provides an image registration and discovery service
  (Parallax) and an image delivery service (Teller). These services are used

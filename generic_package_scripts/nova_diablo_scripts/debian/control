@@ -255,7 +255,7 @@ Description: OpenStack Compute - virtual machine scheduler
 
 Package: nova-volume
 Architecture: all
-Depends: ${ostack-lsb-base}, nova-common (= ${binary:Version}), lvm2, iscsitarget, ${python:Depends}, ${misc:Depends}
+Depends: ${ostack-lsb-base}, nova-common (= ${binary:Version}), python-paramiko, python-pexpect, lvm2, iscsitarget, ${python:Depends}, ${misc:Depends}, 
 Suggests: sheepdog
 Description: OpenStack Compute - storage
  OpenStack is a reliable cloud infrastructure. Its mission is to produce
