@@ -8,13 +8,13 @@ vagrant_ssh() {
     ssh ${VUSER}@${VHOST} -p ${VPORT} -i ${VIDFILE} -o NoHostAuthenticationForLocalhost=yes "$@"
 }
 
-vagrant_ssh /vagrant/initialize.sh
+vagrant_ssh sudo /vagrant/initialize.sh
 
-vagrant_ssh /vagrant/package_nova.sh $1
-vagrant_ssh mv /home/vagrant/nova/nova_debs.tgz /vagrant
+vagrant_ssh sudo /vagrant/package_nova.sh $1
+vagrant_ssh sudo mv /home/vagrant/nova/nova_debs.tgz /vagrant
 
-vagrant_ssh /vagrant/package_glance.sh $1
-vagrant_ssh mv /home/vagrant/glance/glance_debs.tgz /vagrant
+vagrant_ssh sudo /vagrant/package_glance.sh $1
+vagrant_ssh sudo mv /home/vagrant/glance/glance_debs.tgz /vagrant
 
-vagrant_ssh /vagrant/package_novaclient.sh
-vagrant_ssh mv /home/vagrant/novaclient/novaclient_debs.tgz /vagrant
+vagrant_ssh sudo /vagrant/package_novaclient.sh
+vagrant_ssh sudo mv /home/vagrant/novaclient/novaclient_debs.tgz /vagrant
