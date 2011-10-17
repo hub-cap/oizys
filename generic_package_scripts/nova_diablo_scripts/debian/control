@@ -121,7 +121,7 @@ Package: nova-compute
 Architecture: all
 Depends: ${ostack-lsb-base}, ${nova-compute-deps}, nova-common (= ${binary:Version}), kpartx, curl, parted,
  ebtables, gawk, iptables, open-iscsi, ${nova-compute-default-hypervisor} | nova-compute-hypervisor,
- ${python:Depends}, ${misc:Depends}
+ ${python:Depends}, ${misc:Depends}, python-paramiko, python-pexpect, uuid-runtime
 Recommends: ajaxterm
 Description: OpenStack Compute - compute node
  OpenStack is a reliable cloud infrastructure. Its mission is to produce
