@@ -1,4 +1,4 @@
-python-novaclient (2.6.4~bzr113) oneiric; urgency=low
+python-novaclient (2.6.4~bzr113-JENKINS_REVNO) oneiric; urgency=low
 
   * New upstream release.
   * Put in a branching condition in debian/rules to allow for lucid build.
