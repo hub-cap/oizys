@@ -1,0 +1,12 @@
+--verbose
+--dhcpbridge_flagfile=/etc/nova/nova.conf
+--dhcpbridge=/usr/bin/nova-dhcpbridge
+--logdir=/var/log/nova
+--state_path=/var/lib/nova
+--guest_drivers=nova.guest.dbaas.DBaaSAgent
+--guest_drivers=nova.guest.pkg.PkgAgent
+--sql_connection=mysql://a:b@c/nova
+--rabbit_host=d
+--rabbit_port=e
+--rabbit_userid=f
+--rabbit_password=RABBIT_PASS
