@@ -13,12 +13,9 @@ cd ~
 rm -fr reddwarf-config
 mkdir -p reddwarf-config
 cd reddwarf-config
-# git clone git://github.com/rackspace/reddwarf.git src
-# git clone git://github.com/hub-cap/nova-temp-package-files.git packagefiles
 mkdir src/
 cd src/
 cp -R /vagrant/reddwarf_config_diablo_scripts/debian .
-# cp -R packagefiles/debian src/
 
 #Somehow change the revno & all the other values
 sed -i.bak "s/JENKINS_REVNO/$1/g" debian/changelog
