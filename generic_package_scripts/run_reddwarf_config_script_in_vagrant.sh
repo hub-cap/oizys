@@ -11,4 +11,4 @@ vagrant_ssh() {
 vagrant_ssh sh /vagrant/initialize.sh
 
 vagrant_ssh sh /vagrant/package_reddwarf_config.sh $1 $2 $3 $4 $5 $6 $7 $8
-vagrant_ssh mv /home/vagrant/reddwarf-config/reddwarf-config.tgz /vagrant
+vagrant_ssh mv /home/vagrant/reddwarf-config/reddwarf-config_debs.tgz /vagrant
