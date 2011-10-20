@@ -29,6 +29,6 @@ sed -i.bak "s/RABBIT_PASS/$8/g" debian/guest.conf
 
 DEB_BUILD_OPTIONS=nocheck,nodocs dpkg-buildpackage -rfakeroot -b -uc -us
 cd ..
-tar czvf reddwarf-config.tgz reddwarf*deb
-# Now we have our files ~/reddwarf-config/reddwarf-config.tgz
+tar czvf reddwarf-config_debs.tgz reddwarf*deb
+# Now we have our files ~/reddwarf-config/reddwarf-config_debs.tgz
 cd ~
