@@ -17,16 +17,6 @@ PIDFILE=/var/run/nova/nova-volume.pid
 
 ENABLED=true
 
-# Guess the VG by getting the first one we see in "vgdisplay -c -A"
-# if nothing was set in the default file
-VGDISPLAY=/sbin/vgdisplay
-if [ -f /etc/default/nova-volume ] ; then
-	. /etc/default/nova-volume
-fi
-if [ -x "${VGDISPLAY}" -a -z "${nova_volume_group}" ] ; then
-	nova_volume_group=`vgdisplay -c -A | tail -n 1 | cut -d":" -f1 | awk '{print $1}'`
-fi
-
 mkdir -p /var/run/nova
 chown nova:root /var/run/nova/
 
@@ -35,11 +25,6 @@ chown nova:root /var/lock/nova/
 
 uid="$(getent passwd nova | cut -f3 -d:)"
 gid="$(getent passwd nova | cut -f4 -d:)"
-
-# Adds what has been configured in /etc/default/nova-volume
-if [ -n ${nova_volume_group} ] ; then
-	DAEMON_ARGS="${DAEMON_ARGS} --volume_group=${nova_volume_group}"
-fi
 
 . /lib/lsb/init-functions
 
