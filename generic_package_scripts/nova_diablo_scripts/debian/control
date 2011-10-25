@@ -405,6 +405,11 @@ Description: OpenStack Compute - documetation
  .
  This package contains the documentation for Nova.
 
+Package: nova-reaper
+Architecture: all
+Depends: ${ostack-lsb-base}, nova-common (= ${binary:Version}), ${python:Depends}, ${misc:Depends}
+Description: Red Dwarf - Nova - Reaper
+
 Package: reddwarf-api
 Architecture: all
 Depends: ${ostack-lsb-base}, nova-common (= ${binary:Version}), ${python:Depends}, ${misc:Depends}
