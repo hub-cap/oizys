@@ -47,9 +47,9 @@ case "$1" in
     ;;
   restart|force-reload)
     test "$ENABLED" = "true" || exit 1
-    $0 start
-    sleep 1
     $0 stop
+    sleep 1
+    $0 start
     ;;
   status)
     test "$ENABLED" = "true" || exit 0
