@@ -12,7 +12,10 @@ cp -R /vagrant/nova_diablo_scripts/debian .
 #Somehow change the revno
 sed -i.bak "s/JENKINS_REVNO/$1/g" debian/changelog
 DEB_BUILD_OPTIONS=nocheck,nodocs dpkg-buildpackage -rfakeroot -b -uc -us
-cd ..
-tar czvf nova_debs.tgz nova* python-nova* reddwarf-api*
+cd dbaas-mycnf
+sh builddeb.sh
+mv dbaas-mycnf*.deb ../../
+cd ../../
+tar czvf nova_debs.tgz nova* python-nova* reddwarf-api* dbaas-mycnf*.deb
 # Now we have our files ~/nova/nova_debs.tgz
 cd ~
