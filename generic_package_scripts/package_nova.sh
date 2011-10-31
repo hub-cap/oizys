@@ -13,6 +13,7 @@ cp -R /vagrant/nova_diablo_scripts/debian .
 sed -i.bak "s/JENKINS_REVNO/$1/g" debian/changelog
 DEB_BUILD_OPTIONS=nocheck,nodocs dpkg-buildpackage -rfakeroot -b -uc -us
 cd dbaas-mycnf
+sed -i.bak "s/\(dbaas-mycnf ([0-9\.-]\+\)/\1-$1/g" debian/changelog
 sh builddeb.sh
 mv dbaas-mycnf*.deb ../../
 cd ../../
