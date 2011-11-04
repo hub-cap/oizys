@@ -1,0 +1,10 @@
+#!/bin/sh -e
+
+if [ "$1" = "configure" ]; then
+    if ! grep -q sql_connection /etc/nova/nova.conf
+	then
+		su -c 'reddwarf-manage db sync' nova
+	fi
+fi
+
+#DEBHELPER#
