@@ -17,6 +17,6 @@ sed -i.bak "s/\(dbaas-mycnf ([0-9\.-]\+\)/\1-$1/g" debian/changelog
 sh builddeb.sh
 mv dbaas-mycnf*.deb ../../
 cd ../../
-tar czvf nova_debs.tgz nova* python-nova* reddwarf-api* dbaas-mycnf*.deb
+tar czvf nova_debs.tgz nova* python-nova* reddwarf-* dbaas-mycnf*.deb
 # Now we have our files ~/nova/nova_debs.tgz
 cd ~

@@ -415,6 +415,11 @@ Architecture: all
 Depends: ${ostack-lsb-base}, nova-common (= ${binary:Version}), ${python:Depends}, ${misc:Depends}
 Description: Red Dwarf - Nova - API frontend
 
+Package: reddwarf-mgmt-api
+Architecture: all
+Depends: ${ostack-lsb-base}, nova-common (= ${binary:Version}), ${python:Depends}, ${misc:Depends}
+Description: Red Dwarf MGMT - Nova - API frontend
+
 Package: nova-guest
 Architecture: all
 Depends: python-pexpect, ${ostack-lsb-base}, nova-common (= ${binary:Version}), ${python:Depends}, ${misc:Depends}, reddwarf-config
