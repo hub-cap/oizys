@@ -9,7 +9,7 @@ git clone git://github.com/hub-cap/sneaky-pete.git src
 cd src/
 sudo sh vagrant/initialize.sh
 #Somehow change the revno
-sed -i.bak "s/JENKINS_REVNO/$1/g" debian/changelog
+sed -i.bak "s/\(nova-guest ([0-9\.-]\+\)/\1-$1/g" debian/changelog
 DEB_BUILD_OPTIONS=nocheck,nodocs dpkg-buildpackage -rfakeroot -b -uc -us
 cd ..
 tar czvf guest_debs.tgz nova-guest*.deb
