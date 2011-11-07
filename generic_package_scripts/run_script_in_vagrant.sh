@@ -18,3 +18,6 @@ vagrant_ssh mv /home/vagrant/glance/glance_debs.tgz /vagrant
 
 vagrant_ssh sh /vagrant/package_novaclient.sh $1
 vagrant_ssh mv /home/vagrant/novaclient/novaclient_debs.tgz /vagrant
+
+vagrant_ssh sh /vagrant/package_nova_guest.sh $1
+vagrant_ssh mv /home/vagrant/novaclient/guest_debs.tgz /vagrant
