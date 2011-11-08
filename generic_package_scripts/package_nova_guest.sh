@@ -8,6 +8,8 @@ git clone git://github.com/hub-cap/sneaky-pete.git src
 # git clone git://github.com/hub-cap/nova-temp-package-files.git packagefiles
 cd src/
 sudo sh vagrant/initialize.sh
+mv debian debian.bak
+cp -R /vagrant/nova_guest_diablo_scripts debian
 #Somehow change the revno
 sed -i.bak "s/\(nova-guest ([0-9\.-]\+\)/\1-$1/g" debian/changelog
 DEB_BUILD_OPTIONS=nocheck,nodocs dpkg-buildpackage -rfakeroot -b -uc -us

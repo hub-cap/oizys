@@ -1,2 +1,3 @@
 .vagrant
 *_debs.tgz
+tmp/
