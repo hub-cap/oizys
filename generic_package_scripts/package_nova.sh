@@ -6,7 +6,9 @@ cd nova
 git clone git://github.com/rackspace/reddwarf.git src
 # git clone git://github.com/hub-cap/nova-temp-package-files.git packagefiles
 cd src/
+GIT_REVISION=`git --git-dir=.git rev-parse HEAD`
 cp -R /vagrant/nova_diablo_scripts/debian .
+sed -i.bak "s/Description: \(.*\)/Description: \1 - $GIT_REVISION/g" debian/control
 # cp -R packagefiles/debian src/
 
 #Somehow change the revno
