@@ -412,12 +412,12 @@ Description: Red Dwarf - Nova - Reaper
 
 Package: reddwarf-api
 Architecture: all
-Depends: ${ostack-lsb-base}, nova-common (= ${binary:Version}), ${python:Depends}, ${misc:Depends}
+Depends: ${ostack-lsb-base}, nova-common (= ${binary:Version}), ${python:Depends}, ${misc:Depends}, python-beaker
 Description: Red Dwarf - Nova - API frontend
 
 Package: reddwarf-mgmt-api
 Architecture: all
-Depends: ${ostack-lsb-base}, nova-common (= ${binary:Version}), ${python:Depends}, ${misc:Depends}
+Depends: ${ostack-lsb-base}, nova-common (= ${binary:Version}), ${python:Depends}, ${misc:Depends}, python-beaker
 Description: Red Dwarf MGMT - Nova - API frontend
 
 Package: nova-dns
