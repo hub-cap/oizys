@@ -1,0 +1,4 @@
+/var/log/nova/reddwarf-mgmt-api.log {
+    daily
+    missingok
+}
