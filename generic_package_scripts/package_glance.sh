@@ -6,7 +6,7 @@ cd glance
 git clone git://github.com/openstack/glance.git src
 cd src
 git fetch --tags
-git checkout 2011.3
+git checkout stable/diablo
 
 cp -R /vagrant/glance_diablo_scripts/debian .
 cp /vagrant/glance.*init debian/
