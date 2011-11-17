@@ -4,7 +4,6 @@ rm -fr nova
 mkdir -p nova
 cd nova
 git clone git://github.com/rackspace/reddwarf.git src
-# git clone git://github.com/hub-cap/nova-temp-package-files.git packagefiles
 cd src/
 GIT_REVISION=`git --git-dir=.git rev-parse HEAD`
 cp -R /vagrant/nova_diablo_scripts/debian .
@@ -13,6 +12,7 @@ sed -i.bak "s/Description: \(.*\)/Description: \1 - $GIT_REVISION/g" debian/cont
 
 #Somehow change the revno
 sed -i.bak "s/JENKINS_REVNO/$1/g" debian/changelog
+sed -i.bak "s/debian\/nova.conf    etc\/nova//g" debian/nova-common.install
 DEB_BUILD_OPTIONS=nocheck,nodocs dpkg-buildpackage -rfakeroot -b -uc -us
 cd dbaas-mycnf
 sed -i.bak "s/\(dbaas-mycnf ([0-9\.-]\+\)/\1-$1/g" debian/changelog
