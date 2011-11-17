@@ -33,6 +33,10 @@ override_dh_auto_clean:
 	rm -rf doc/build
 	rm -rf glance.sqlite
 
+override_dh_installlogrotate:
+	dh_installlogrotate --name glance-api
+	dh_installlogrotate --name glance-registry
+
 override_dh_installinit:
 	dh_installinit --name glance-api
 	dh_installinit --name glance-registry
