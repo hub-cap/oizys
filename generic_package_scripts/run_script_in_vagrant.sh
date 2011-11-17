@@ -21,3 +21,6 @@ vagrant_ssh mv /home/vagrant/novaclient/novaclient_debs.tgz /vagrant
 
 vagrant_ssh sh /vagrant/package_nova_guest.sh $1
 vagrant_ssh mv /home/vagrant/guest/guest_debs.tgz /vagrant
+
+vagrant_ssh sh /vagrant/package_swift.sh $1
+vagrant_ssh mv /home/vagrant/swift/swift_debs.tgz /vagrant
