@@ -10,17 +10,37 @@ vagrant_ssh() {
 
 vagrant_ssh sh /vagrant/initialize.sh
 
-vagrant_ssh sh /vagrant/package_nova.sh $1
-vagrant_ssh mv /home/vagrant/nova/nova_debs.tgz /vagrant
+if [ $2 == "all" ] || [ $2 == "nova" ]
+then 
+    echo "Packaging Nova"
+    vagrant_ssh sh /vagrant/package_nova.sh $1
+    vagrant_ssh mv /home/vagrant/nova/nova_debs.tgz /vagrant
+fi
 
-vagrant_ssh sh /vagrant/package_glance.sh $1
-vagrant_ssh mv /home/vagrant/glance/glance_debs.tgz /vagrant
+if [ $2 == "all" ] || [ $2 == "glance" ]
+then 
+    echo "Packaging Glance"
+    vagrant_ssh sh /vagrant/package_glance.sh $1
+    vagrant_ssh mv /home/vagrant/glance/glance_debs.tgz /vagrant
+fi
 
-vagrant_ssh sh /vagrant/package_novaclient.sh $1
-vagrant_ssh mv /home/vagrant/novaclient/novaclient_debs.tgz /vagrant
+if [ $2 == "all" ] || [ $2 == "novaclient" ]
+then 
+    echo "Packaging Nova Client"
+    vagrant_ssh sh /vagrant/package_novaclient.sh $1
+    vagrant_ssh mv /home/vagrant/novaclient/novaclient_debs.tgz /vagrant
+fi
 
-vagrant_ssh sh /vagrant/package_nova_guest.sh $1
-vagrant_ssh mv /home/vagrant/guest/guest_debs.tgz /vagrant
+if [ $2 == "all" ] || [ $2 == "guest" ]
+then 
+    echo "Packaging Nova Guest"
+    vagrant_ssh sh /vagrant/package_nova_guest.sh $1
+    vagrant_ssh mv /home/vagrant/guest/guest_debs.tgz /vagrant
+fi
 
-vagrant_ssh sh /vagrant/package_swift.sh $1
-vagrant_ssh mv /home/vagrant/swift/swift_debs.tgz /vagrant
+if [ $2 == "all" ] || [ $2 == "swift" ]
+then 
+    echo "Packaging Swift"
+    vagrant_ssh sh /vagrant/package_swift.sh $1
+    vagrant_ssh mv /home/vagrant/swift/swift_debs.tgz /vagrant
+fi
