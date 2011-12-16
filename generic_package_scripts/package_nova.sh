@@ -5,6 +5,9 @@ mkdir -p nova
 cd nova
 git clone git://github.com/rackspace/reddwarf.git src
 cd src/
+git fetch --tags
+git checkout stable/diablo
+
 GIT_REVISION=`git --git-dir=.git rev-parse HEAD`
 cp -R /vagrant/nova_diablo_scripts/debian .
 sed -i.bak "s/Description: \(.*\)/Description: \1 - $GIT_REVISION/g" debian/control
