@@ -13,7 +13,7 @@ vagrant_ssh sh /vagrant/initialize.sh
 if [ $2 == "all" ] || [ $2 == "nova" ]
 then 
     echo "Packaging Nova"
-    vagrant_ssh sh /vagrant/package_nova.sh $1
+    vagrant_ssh sh /vagrant/package_nova.sh $1 $3
     vagrant_ssh mv /home/vagrant/nova/nova_debs.tgz /vagrant
 fi
 
