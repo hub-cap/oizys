@@ -1,0 +1,139 @@
+Index: reddwarf/nova/compute/api.py
+===================================================================
+--- reddwarf.orig/nova/compute/api.py	2012-01-03 13:30:47.000000000 -0600
++++ reddwarf/nova/compute/api.py	2012-01-03 13:31:04.000000000 -0600
+@@ -51,6 +51,9 @@
+                      'Timeout after NN seconds when looking for a host.')
+ 
+ 
++dns_entry_factory = None
++
++
+ def generate_default_hostname(instance):
+     """Default function to generate a hostname given an instance reference."""
+     display_name = instance['display_name']
+@@ -71,7 +74,21 @@
+             deletions += c
+     if isinstance(display_name, unicode):
+         display_name = display_name.encode('latin-1', 'ignore')
+-    return display_name.translate(table, deletions)
++    hostname = "%s-instance-%s" % (display_name.translate(table, deletions),
++                                   instance['id'])
++    return hostname
++
++
++def generate_dns_hostname(instance):
++    """Provide a DNS generated hostname given an instance reference"""
++    global dns_entry_factory
++    if not dns_entry_factory:
++        dns_entry_factory = utils.import_object(FLAGS.dns_instance_entry_factory)
++    entry = dns_entry_factory.create_entry(instance)
++    if entry:
++        return entry.name
++    else:
++        return generate_default_hostname(instance)
+ 
+ 
+ def _is_able_to_shutdown(instance, instance_id):
+@@ -96,7 +113,7 @@
+     """API for interacting with the compute manager."""
+ 
+     def __init__(self, image_service=None, network_api=None,
+-                 volume_api=None, hostname_factory=generate_default_hostname,
++                 volume_api=None, hostname_factory=generate_dns_hostname,
+                  **kwargs):
+         self.image_service = image_service or \
+                 nova.image.get_default_image_service()
+Index: reddwarf/nova/compute/manager.py
+===================================================================
+--- reddwarf.orig/nova/compute/manager.py	2012-01-03 13:33:44.000000000 -0600
++++ reddwarf/nova/compute/manager.py	2012-01-03 13:34:01.000000000 -0600
+@@ -143,7 +143,11 @@
+ 
+         self.network_api = network.API()
+         self.network_manager = utils.import_object(FLAGS.network_manager)
++        #TODO(tim.simpson) Anywhere volume_manager is called here is probably
++        #                  a bug. volume.API() should be used instead.
+         self.volume_manager = utils.import_object(FLAGS.volume_manager)
++        self.volume_api = volume.API()
++        self.volume_client = volume.Client()
+         self._last_host_check = 0
+         super(ComputeManager, self).__init__(service_name="compute",
+                                              *args, **kwargs)
+@@ -508,7 +512,10 @@
+     @checks_instance_lock
+     def terminate_instance(self, context, instance_id):
+         """Terminate an instance on this host."""
+-        self._shutdown_instance(context, instance_id, 'Terminating')
++        try:
++            self._shutdown_instance(context, instance_id, 'Terminating')
++        except Exception as ex:
++            LOG.error(ex)
+         instance = self.db.instance_get(context.elevated(), instance_id)
+         self._instance_update(context,
+                               instance_id,
+@@ -817,6 +824,7 @@
+     @checks_instance_lock
+     def rescue_instance(self, context, instance_id):
+         """Rescue an instance on this host."""
++
+         LOG.audit(_('instance %s: rescuing'), instance_id, context=context)
+         context = context.elevated()
+ 
+@@ -1256,8 +1264,9 @@
+         instance_ref = self.db.instance_get(context, instance_id)
+         LOG.audit(_("instance %(instance_id)s: attaching volume %(volume_id)s"
+                 " to %(mountpoint)s") % locals(), context=context)
+-        dev_path = self.volume_manager.setup_compute_volume(context,
+-                                                            volume_id)
++
++        dev_path = self.volume_client.initialize(context, volume_id, self.host)
++
+         try:
+             self.driver.attach_volume(instance_ref['name'],
+                                       dev_path,
+@@ -1282,8 +1291,7 @@
+             #             ecxception below.
+             LOG.exception(_("instance %(instance_id)s: attach failed"
+                     " %(mountpoint)s, removing") % locals(), context=context)
+-            self.volume_manager.remove_compute_volume(context,
+-                                                      volume_id)
++            self.volume_client.remove_volume(context, volume_id, self.host)
+             raise exc
+ 
+         return True
+@@ -1304,7 +1312,7 @@
+         else:
+             self.driver.detach_volume(instance_ref['name'],
+                                       volume_ref['mountpoint'])
+-        self.volume_manager.remove_compute_volume(context, volume_id)
++        self.volume_client.remove_volume(context, volume_id, self.host)
+         self.db.volume_detached(context, volume_id)
+         if destroy_bdm:
+             self.db.block_device_mapping_destroy_by_instance_and_volume(
+@@ -1315,6 +1323,7 @@
+         """Detach a volume from an instance."""
+         return self._detach_volume(context, instance_id, volume_id, True)
+ 
++    @exception.wrap_exception(notifier=notifier, publisher_id=publisher_id())
+     def remove_volume(self, context, volume_id):
+         """Remove volume on compute host.
+ 
+@@ -1416,7 +1425,7 @@
+             LOG.info(_("%s has no volume."), hostname)
+         else:
+             for v in instance_ref['volumes']:
+-                self.volume_manager.setup_compute_volume(context, v['id'])
++                self.volume_client.initialize(context, v['id'], v['host'])
+ 
+         # Bridge settings.
+         # Call this method prior to ensure_filtering_rules_for_instance,
+@@ -1526,7 +1535,7 @@
+         # Detaching volumes.
+         try:
+             for vol in self.db.volume_get_all_by_instance(ctxt, instance_id):
+-                self.volume_manager.remove_compute_volume(ctxt, vol['id'])
++                self.volume_client.remove_volume(ctxt, vol['id'])
+         except exception.NotFound:
+             pass
+ 
