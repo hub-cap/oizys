@@ -1,4 +1,7 @@
 /var/log/nova/nova-network.log {
+    copytruncate
+    compress
     daily
+    delaycompress
     missingok
 }

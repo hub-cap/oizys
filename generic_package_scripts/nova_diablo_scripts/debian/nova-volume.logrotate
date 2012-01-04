@@ -1,4 +1,7 @@
 /var/log/nova/nova-volume.log {
+    copytruncate
+    compress
     daily
+    delaycompress
     missingok
 }
