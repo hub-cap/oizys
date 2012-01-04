@@ -1,4 +1,7 @@
 /var/log/nova/reddwarf-mgmt-api.log {
+    copytruncate
+    compress
     daily
+    delaycompress
     missingok
 }

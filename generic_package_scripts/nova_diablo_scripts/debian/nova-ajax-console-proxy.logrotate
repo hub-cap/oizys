@@ -1,4 +1,7 @@
 /var/log/nova/nova-ajax-console-proxy.log {
+    copytruncate
+    compress
     daily
+    delaycompress
     missingok
 }
