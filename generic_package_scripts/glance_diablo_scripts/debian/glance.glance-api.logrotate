@@ -1,4 +1,7 @@
 /var/log/glance/api.log {
+    copytruncate
+    compress
     daily
+    delaycompress
     missingok
 }
