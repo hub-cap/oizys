@@ -1,7 +1,7 @@
 Index: reddwarf/nova/compute/api.py
 ===================================================================
---- reddwarf.orig/nova/compute/api.py	2012-01-03 13:30:47.000000000 -0600
-+++ reddwarf/nova/compute/api.py	2012-01-03 13:31:04.000000000 -0600
+--- reddwarf.orig/nova/compute/api.py	2012-01-03 13:35:45.000000000 -0600
++++ reddwarf/nova/compute/api.py	2012-01-10 11:43:46.000000000 -0600
 @@ -51,6 +51,9 @@
                       'Timeout after NN seconds when looking for a host.')
  
@@ -46,21 +46,29 @@ Index: reddwarf/nova/compute/api.py
                  nova.image.get_default_image_service()
 Index: reddwarf/nova/compute/manager.py
 ===================================================================
---- reddwarf.orig/nova/compute/manager.py	2012-01-03 13:33:44.000000000 -0600
-+++ reddwarf/nova/compute/manager.py	2012-01-03 13:34:01.000000000 -0600
-@@ -143,7 +143,11 @@
+--- reddwarf.orig/nova/compute/manager.py	2012-01-03 13:36:00.000000000 -0600
++++ reddwarf/nova/compute/manager.py	2012-01-11 12:56:26.000000000 -0600
+@@ -62,6 +62,7 @@
+ from nova.compute.utils import terminate_volumes
+ from nova.virt import driver
+ 
++from reddwarf import volume as reddwarf_volume
+ 
+ FLAGS = flags.FLAGS
+ flags.DEFINE_string('instances_path', '$state_path/instances',
+@@ -143,7 +144,11 @@
  
          self.network_api = network.API()
          self.network_manager = utils.import_object(FLAGS.network_manager)
 +        #TODO(tim.simpson) Anywhere volume_manager is called here is probably
 +        #                  a bug. volume.API() should be used instead.
          self.volume_manager = utils.import_object(FLAGS.volume_manager)
-+        self.volume_api = volume.API()
-+        self.volume_client = volume.Client()
++        self.volume_api = reddwarf_volume.API()
++        self.volume_client = reddwarf_volume.Client()
          self._last_host_check = 0
          super(ComputeManager, self).__init__(service_name="compute",
                                               *args, **kwargs)
-@@ -508,7 +512,10 @@
+@@ -508,7 +513,10 @@
      @checks_instance_lock
      def terminate_instance(self, context, instance_id):
          """Terminate an instance on this host."""
@@ -72,7 +80,7 @@ Index: reddwarf/nova/compute/manager.py
          instance = self.db.instance_get(context.elevated(), instance_id)
          self._instance_update(context,
                                instance_id,
-@@ -817,6 +824,7 @@
+@@ -817,6 +825,7 @@
      @checks_instance_lock
      def rescue_instance(self, context, instance_id):
          """Rescue an instance on this host."""
@@ -80,7 +88,7 @@ Index: reddwarf/nova/compute/manager.py
          LOG.audit(_('instance %s: rescuing'), instance_id, context=context)
          context = context.elevated()
  
-@@ -1256,8 +1264,9 @@
+@@ -1256,8 +1265,9 @@
          instance_ref = self.db.instance_get(context, instance_id)
          LOG.audit(_("instance %(instance_id)s: attaching volume %(volume_id)s"
                  " to %(mountpoint)s") % locals(), context=context)
@@ -92,7 +100,7 @@ Index: reddwarf/nova/compute/manager.py
          try:
              self.driver.attach_volume(instance_ref['name'],
                                        dev_path,
-@@ -1282,8 +1291,7 @@
+@@ -1282,8 +1292,7 @@
              #             ecxception below.
              LOG.exception(_("instance %(instance_id)s: attach failed"
                      " %(mountpoint)s, removing") % locals(), context=context)
@@ -102,7 +110,7 @@ Index: reddwarf/nova/compute/manager.py
              raise exc
  
          return True
-@@ -1304,7 +1312,7 @@
+@@ -1304,7 +1313,7 @@
          else:
              self.driver.detach_volume(instance_ref['name'],
                                        volume_ref['mountpoint'])
@@ -111,7 +119,7 @@ Index: reddwarf/nova/compute/manager.py
          self.db.volume_detached(context, volume_id)
          if destroy_bdm:
              self.db.block_device_mapping_destroy_by_instance_and_volume(
-@@ -1315,6 +1323,7 @@
+@@ -1315,6 +1324,7 @@
          """Detach a volume from an instance."""
          return self._detach_volume(context, instance_id, volume_id, True)
  
@@ -119,7 +127,7 @@ Index: reddwarf/nova/compute/manager.py
      def remove_volume(self, context, volume_id):
          """Remove volume on compute host.
  
-@@ -1416,7 +1425,7 @@
+@@ -1416,7 +1426,7 @@
              LOG.info(_("%s has no volume."), hostname)
          else:
              for v in instance_ref['volumes']:
@@ -128,7 +136,7 @@ Index: reddwarf/nova/compute/manager.py
  
          # Bridge settings.
          # Call this method prior to ensure_filtering_rules_for_instance,
-@@ -1526,7 +1535,7 @@
+@@ -1526,7 +1536,7 @@
          # Detaching volumes.
          try:
              for vol in self.db.volume_get_all_by_instance(ctxt, instance_id):
