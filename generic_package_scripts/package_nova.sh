@@ -17,6 +17,8 @@ fi
 
 GIT_REVISION=`git --git-dir=.git rev-parse HEAD`
 cp -R /vagrant/nova_diablo_scripts/debian .
+cp patches/*.patch debian/patches
+cat patches/series >> debian/patches/series
 sed -i.bak "s/Description: \(.*\)/Description: \1 - $GIT_REVISION/g" debian/control
 # cp -R packagefiles/debian src/
 
