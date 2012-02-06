@@ -2,9 +2,9 @@
 # This is useful if you need the _same_ code packaged into mulitple debs w/ different names, such as names that
 # are environment based, dev, qa, etc.....
 
-$deb_full_path = $1
-$old_version_string = $2
-$new_version_string = $3
+$deb_full_path=$1
+$old_version_string=$2
+$new_version_string=$3
 
 mkdir tmp/
 cd tmp/
