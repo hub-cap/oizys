@@ -48,6 +48,7 @@ Cmnd_Alias NOVACMDS = /bin/chmod /var/lib/nova/tmp/*/root/.ssh, \
                       /sbin/blkid,                              \
                       /bin/dd,                                  \
                       /usr/bin/touch,                           \
+                      /sbin/resize2fs,                          \
                       /usr/sbin/dnsmasq
 
 nova ALL=(root) NOPASSWD: SETENV: NOVACMDS
