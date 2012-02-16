@@ -4,7 +4,7 @@ cd ~
 rm -fr nova
 mkdir -p nova
 cd nova
-git clone git://github.com/rackspace/reddwarf.git src
+git clone git://github.com/hub-cap/reddwarf.git src
 cd src/
 git fetch --tags
 # Checks the num of params to see if a 2nd param (branch) is passed in
@@ -23,7 +23,11 @@ sed -i.bak "s/Description: \(.*\)/Description: \1 - $GIT_REVISION/g" debian/cont
 # cp -R packagefiles/debian src/
 
 #Somehow change the revno
-sed -i.bak "s/JENKINS_REVNO/$1/g" debian/changelog
+git-dch  --ignore-branch -a -S -v -N 1.0.0-GENERIC
+# sed -i.bak "s/1.0.0~\(.[^)]*\)/1.0.0~\1-$1/g" debian/changelog
+cp debian/changelog /vagrant/nova_diablo_scripts/debian
+#cd /vagrant/nova_diablo_scripts
+#cd ~/nova/src
 sed -i.bak "s/debian\/nova.conf    etc\/nova//g" debian/nova-common.install
 DEB_BUILD_OPTIONS=nocheck,nodocs dpkg-buildpackage -rfakeroot -b -uc -us
 cd dbaas-mycnf
