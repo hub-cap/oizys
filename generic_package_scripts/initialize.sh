@@ -5,4 +5,5 @@ sudo apt-get -y --allow-unauthenticated --force-yes install git-core bzr debhelp
 python-all python-sphinx python-distutils-extra python-gflags python-mox python-carrot python-boto python-mock \
 python-amqplib python-sqlalchemy python-eventlet python-routes python-webob python-swift \
 python-cheetah python-nose python-paste python-pastedeploy python-tempita python-migrate python-netaddr \
-python-glance python-paramiko python-novaclient python-lockfile python-simplejson python-lxml pep8 dpkg-dev curl
+python-glance python-paramiko python-novaclient python-lockfile python-simplejson python-lxml pep8 dpkg-dev curl \
+git-buildpackage
