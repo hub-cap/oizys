@@ -1,4 +1,4 @@
-nova (2012.21.12-JENKINS_REVNO) lucid; urgency=low
+nova (1.0.0-GENERIC~1.gbpad8b8f) lucid; urgency=low
 
   [aut-gen]
   * generated version. THIS NEEDS TO BE FIXED!
