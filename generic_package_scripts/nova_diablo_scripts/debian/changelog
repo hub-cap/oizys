@@ -1,5 +1,7 @@
 nova (1.0.0-GENERIC~1.gbpad8b8f) lucid; urgency=low
 
+  ** SNAPSHOT build @7b4fe1034da9dd5c6159e619a1873127c0e966d3 **
+
   [aut-gen]
   * generated version. THIS NEEDS TO BE FIXED!
 
