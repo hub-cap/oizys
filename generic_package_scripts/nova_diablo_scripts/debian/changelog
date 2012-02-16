@@ -1,3 +1,20 @@
+nova (1.0.0-GENERIC~1.gbp1228db) UNRELEASED; urgency=low
+
+  ** SNAPSHOT build @1228dbe35969b3952e9dfbfd30ba000c32f5e215 **
+
+  [ Michael Basnight ]
+  * Adding a test for checking the dots in urls
+
+  [ Mike Asthalter ]
+  * made final updates to Devguide and Getting Started for Hackathon
+  * update pom, auth examples, devguide, getting started with service
+    catalog updates for auth examples, LON endpoint, and absolute limits
+    for instances
+
+  [ vagrant ]
+
+ -- vagrant <vagrant@vagrant>  Thu, 16 Feb 2012 16:54:26 -0600
+
 nova (1.0.0-GENERIC~1.gbp124b03) UNRELEASED; urgency=low
 
   ** SNAPSHOT build @124b0367a4cefe3eb38554fd6afa4d995df53358 **
