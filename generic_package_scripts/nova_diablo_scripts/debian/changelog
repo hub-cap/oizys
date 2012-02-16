@@ -1,3 +1,132 @@
+nova (1.0.0-GENERIC~1.gbp8870ae) UNRELEASED; urgency=low
+
+  ** SNAPSHOT build @8870aed0a9e117a18ed5aaa65478d6d898c969d1 **
+
+  [ Michael Basnight ]
+  * Dummy commit
+
+  [ vagrant ]
+
+ -- vagrant <vagrant@vagrant>  Thu, 16 Feb 2012 13:21:14 -0600
+
+nova (1.0.0-GENERIC~1.gbp124b03) UNRELEASED; urgency=low
+
+  ** SNAPSHOT build @124b0367a4cefe3eb38554fd6afa4d995df53358 **
+
+  [ Nirmal Ranganathan ]
+  * Updating the xsd/wadl for instance actions - reboot, resize
+
+  [ Tim Simpson ]
+  * Initial check-in of reboot code.
+  * Bug fix.
+
+  [ Ed Cranford ]
+  * Groundwork for mgmt instance detail call.
+  * Fixed the reddwarfclient types and some tests.
+  * XSD and WADL changes.
+  * Fixed metadata and made a pair of changes to aid in our exodus of
+    nova
+  * Removed a vestigial /versions/ change that isn't part of this
+    branch.
+  * Fixed a typo in the mgmt wadl
+  * Fixed WADL and metadata, and generated relevant examples.
+  * It's dangerous to go without tests! Take this!
+
+  [ Michael Basnight ]
+  * Adding the set onboot to false
+
+  [ Tim Simpson ]
+  * Removing non-existing import.
+
+  [ Nirmal Ranganathan ]
+  * Revert "Removing non-existing import."
+
+  [ Mike Asthalter ]
+  * updated docs and management.wadl based on comments from reviewers
+
+  [ Michael Basnight ]
+  * Updating the codebase to work with restarts.
+
+  [ Nirmal Ranganathan ]
+  * Adding support for resizing of instance volumes
+
+  [ Michael Basnight ]
+  * Fixing the unit test double quote oops.
+
+  [ Nirmal Ranganathan ]
+  * Removing X_AUTH_PROJECT_ID header requirement
+  * Removed the project id references from the examples and docs
+
+  [ Mike Asthalter ]
+  * updated devguide and getting started with DFW endpoint
+
+  [ Tim Simpson ]
+  * Attempting to fix the DNS re-auth error.
+  * Added soft and hard reboots to the REST API.
+  * Adding ability to CI script to allow running of DNS tests from the
+    vagrantci command.
+  * Added restarts to the example generation script.
+  * Adding generated reboot samples.
+
+  [ Craig Vyvial ]
+  * update the wadl and xsd with interrogation data
+  * create new mapping for diagnostics
+  * adding in the diagnostics call to the mgmt api and tests
+  * removing duplicated build agent method by making a diagnostic helper
+    method
+
+  [ Tim Simpson ]
+  * Made the Reddwarf and RSDNS unit tests run as part of CI.
+
+  [ Ed Cranford ]
+  * Build a tiny class designed to make sense of the various guest
+    statuses we may have. Tempted to use the infomercial format where
+    someone is trying to get the status of an instance and it's in black
+    and white and they're struggling a lot more than you'd expect, and
+    then yell THERE'S GOT TO BE A BETTER WAY! so I can step in and the
+    commercial switches to color as I say WELL NOW THERE IS!
+  * Removed a log debug line and changed a pair of exceptions to a more
+    native type.
+  * Ah, the old NotFound switcheroo....
+
+  [ Nirmal Ranganathan ]
+  * Refactoring the cli and moving the management stuff into reddwarf-
+    manage
+
+  [ Tim Simpson ]
+  * Added fix and test for DNS eventlet bug.
+
+  [ Craig Vyvial ]
+  * adding fdSize to the diagnostics data
+  * change the tests for fat pete testing the vmPeak instead of the
+    vmHwm
+
+  [ Tim Simpson ]
+  * Fixing DNS unit tests to accomodate DNS eventlet fix.
+
+  [ Nirmal Ranganathan ]
+  * Updated the example generator to use separate instances for xml and
+    json
+
+  [ Ed Cranford ]
+  * Fixing the root history so it reports the uuid and not the local id,
+    so the return actually makes sense.
+  * Now we also test that the ids are the same. This explains why we
+    missed the id before.
+
+  [ Nirmal Ranganathan ]
+  * Removing X_AUTH_PROJECT_ID header requirement
+  * Generating all the my.cnf templates during dbaas-mycnf package build
+  * Adding examples and updating docs for mgmt instance diagnostics and
+    list all instances
+  * Fracturing the reboot into restart in the public api and reboot in
+    the management api
+  * Updating status for volume resizing
+
+  [ vagrant ]
+
+ -- vagrant <vagrant@vagrant>  Thu, 16 Feb 2012 13:10:45 -0600
+
 nova (1.0.0-GENERIC~1.gbpad8b8f) lucid; urgency=low
 
   ** SNAPSHOT build @36b9a5dec61e31de9d76e190fd0fcf9c6f30f846 **
