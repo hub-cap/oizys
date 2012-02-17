@@ -30,7 +30,7 @@ sed -i.bak "s/debian\/nova.conf    etc\/nova//g" debian/nova-common.install
 DEB_BUILD_OPTIONS=nocheck,nodocs dpkg-buildpackage -rfakeroot -b -uc -us
 cd dbaas-mycnf
 sed -i.bak "s/\(dbaas-mycnf ([0-9\.-]\+\)/\1-$1/g" debian/changelog
-sh builddeb.sh
+./builddeb.sh
 mv dbaas-mycnf*.deb ../../
 cd ../../
 tar czvf nova_debs.tgz nova* python-nova* reddwarf-* dbaas-mycnf*.deb
