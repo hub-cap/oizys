@@ -1,3 +1,26 @@
+nova (1.0.0-GENERIC~1.gbp59c264) UNRELEASED; urgency=low
+
+  ** SNAPSHOT build @59c26416d05df075ab1e14bb44099bd87ca63008 **
+
+  [ Michael Basnight ]
+  * Adding in the volume setup in the compute manager and starting the
+    path ensure
+  * Adding the ensure path code
+  * Doing some fixing and adding some debug printing
+  * turning the path check into a poll
+  * turning the path check into a poll
+
+  [ Tim Simpson ]
+  * Changed the volume_client._setup_volume method to raise a
+    VolumeAlreadySetup error if the driver detects discovery failed
+    because the volume was already discovered. Changed some exceptions
+    in the reddwarf.exception module to inherit NovaException instead of
+    NotFound.
+
+  [ vagrant ]
+
+ -- vagrant <vagrant@vagrant>  Thu, 16 Feb 2012 21:26:36 -0600
+
 nova (1.0.0-GENERIC~1.gbp1228db) UNRELEASED; urgency=low
 
   ** SNAPSHOT build @1228dbe35969b3952e9dfbfd30ba000c32f5e215 **
