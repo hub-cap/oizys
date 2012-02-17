@@ -4,6 +4,14 @@ nova (1.0.0-GENERIC~1.gbp1228db) UNRELEASED; urgency=low
 
   * UNRELEASED
 
+ -- vagrant <vagrant@vagrant>  Thu, 16 Feb 2012 20:20:28 -0600
+
+nova (1.0.0-GENERIC~1.gbp1228db) UNRELEASED; urgency=low
+
+  ** SNAPSHOT build @1228dbe35969b3952e9dfbfd30ba000c32f5e215 **
+
+  * UNRELEASED
+
  -- vagrant <vagrant@vagrant>  Thu, 16 Feb 2012 19:41:37 -0600
 
 nova (1.0.0-GENERIC~1.gbp1228db) UNRELEASED; urgency=low
