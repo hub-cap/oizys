@@ -1,3 +1,11 @@
+nova (1.0.0-131-GENERIC~1.gbp59c264) UNRELEASED; urgency=low
+
+  ** SNAPSHOT build @59c26416d05df075ab1e14bb44099bd87ca63008 **
+
+  * UNRELEASED
+
+ -- vagrant <vagrant@vagrant>  Thu, 23 Feb 2012 13:39:51 -0600
+
 nova (1.0.0-GENERIC~1.gbp59c264) UNRELEASED; urgency=low
 
   ** SNAPSHOT build @59c26416d05df075ab1e14bb44099bd87ca63008 **
