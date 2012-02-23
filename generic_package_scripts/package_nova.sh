@@ -23,7 +23,7 @@ sed -i.bak "s/Description: \(.*\)/Description: \1 - $GIT_REVISION/g" debian/cont
 # cp -R packagefiles/debian src/
 
 #Somehow change the revno
-git-dch  --ignore-branch -a -S -v -N 1.0.0-GENERIC --full
+git-dch  --ignore-branch -a -S -v -N 1.0.0-$1 --full
 # sed -i.bak "s/1.0.0~\(.[^)]*\)/1.0.0~\1-$1/g" debian/changelog
 cp debian/changelog /vagrant/nova_diablo_scripts/debian
 sed -i.bak "s/debian\/nova.conf    etc\/nova//g" debian/nova-common.install
