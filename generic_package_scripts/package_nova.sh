@@ -29,7 +29,7 @@ cp debian/changelog /vagrant/nova_diablo_scripts/debian
 sed -i.bak "s/debian\/nova.conf    etc\/nova//g" debian/nova-common.install
 DEB_BUILD_OPTIONS=nocheck,nodocs dpkg-buildpackage -rfakeroot -b -uc -us
 cd dbaas-mycnf
-sed -i.bak "s/\(dbaas-mycnf ([0-9\.-]\+\)/\1-$1/g" debian/changelog
+sed -i.bak "s/\(dbaas-mycnf ([0-9\.-]\+\)/\1-$1\.gbpe6a4b0/g" debian/changelog
 ./builddeb.sh
 mv dbaas-mycnf*.deb ../../
 cd ../../

@@ -12,7 +12,7 @@ mv debian debian.bak
 cp -R /vagrant/nova_guest_diablo_scripts debian
 GIT_REVISION=`git --git-dir=.git rev-parse HEAD`
 #Somehow change the revno
-sed -i.bak "s/\(nova-guest ([0-9\.-]\+\)/\1-$1/g" debian/changelog
+sed -i.bak "s/\(nova-guest ([0-9\.-]\+\)/\1-$1\.gbpe6a4b0/g" debian/changelog
 sed -i.bak "s/Description: \(.*\)/Description: \1 - $GIT_REVISION/g" debian/control
 DEB_BUILD_OPTIONS=nocheck,nodocs dpkg-buildpackage -rfakeroot -b -uc -us
 cd ..
