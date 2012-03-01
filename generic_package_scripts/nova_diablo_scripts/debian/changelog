@@ -1,3 +1,130 @@
+nova (1.0.0-132-GENERIC~1.gbpe6a4b0) UNRELEASED; urgency=low
+
+  ** SNAPSHOT build @e6a4b017b586658403c11ae8f6198e29cb14a32f **
+
+  [ Craig Vyvial ]
+  * adding resize instance by flavor id in the api and added the methods
+    to the code path with log messages to allow it to compile and run.
+
+  [ Tim Simpson ]
+  * Added nontested compute manager and guest api changes for
+    resize_in_place.
+
+  [ Craig Vyvial ]
+  * adding resize instance by flavor id in the api and added the methods
+    to the code path with log messages to allow it to compile and run.
+
+  [ Tim Simpson ]
+  * Added nontested compute manager and guest api changes for
+    resize_in_place.
+  * Added some helper functions to the reddwarf.api.status module.
+
+  [ Daniel Salinas ]
+  * first pass at aggregating all instance size methods to facilitate an
+    easy 'on host' resize. Finished refactor for resize_in_place add
+    public method for resizing in place Added method to allow resetting
+    an instance back to it's orginal size fixed typo of argument passed
+    to _set_diskspace()
+
+  [ Craig Vyvial ]
+  * added validation of the status of the instance id before the public
+    ip sends the message to the compute api.
+  * added a few integration tests for the resizing of an instance
+
+  [ Daniel Salinas ]
+  * changed resize_in_place to raise InstanceUnacceptable if the resize
+    fails to complete instead of returning False
+  * fixed typo in method doc for _set_instance_size()
+
+  [ Craig Vyvial ]
+  * refractored the public api added unit tests for the public api
+  * adding more unit test coverage
+  * clean up unit tests
+
+  [ Tim Simpson ]
+  * Completion of ReddwarfComputeManager resize_in_place. * Also added a
+    change to the reddwarf-ci script to test sneaky-pete changes in the
+    resize-flavor branch.
+
+  [ Craig Vyvial ]
+  * working on making ci pass its tests....
+
+  [ Ed Cranford ]
+  * Adding unit tests for the status api.
+
+  [ Craig Vyvial ]
+  * a few fixes... - Same method names - Need a new flavor id to be a
+    valid call - Changed the name of the
+  * Fixed the check status call for calling actions on instances
+  * fixing up the ci test yet again
+  * changed the way we check for exceptions in ci tests
+  * elevating the context to get the host memory
+  * elevated the context correctly
+  * fixing unit tests with admin context
+  * updating the ci tests
+
+  [ Daniel Salinas ]
+  * first fix for unittests
+  * patches for more unittests
+  * fixed broken calls to self.assertRaises
+  * fixed set_diskspace tests
+  * fixed several tests broken by refactoring.  also fixed broken
+    unittests for set_onboot()
+  * fixed broken _set_diskspace test methods
+  * fixed last broken unittest.  All unittests pass
+  * added unittests for _set_instance_size
+  * fixed broken set_instance tests
+  * added unittests for resize_in_place
+  * added final test for instance size reset
+  * comment out 2 failure cases because of exception order bug in mox,
+    need to find a solution to implement these 2 tests
+
+  [ Tim Simpson ]
+  * Changed AfterInstanceCreation test to not fail if the state is no
+    longer BUILDING.
+
+  [ Craig Vyvial ]
+  * updated tests
+
+  [ Ed Cranford ]
+  * WADL changes and stub samples for instance flavor resizing.
+  * Changed the type of the deleted field in mgmt list instances. Added
+    info for resizeInstance in dbaas.wadl.
+  * Changed those ids to flavorRefs as they should be
+
+  [ Craig Vyvial ]
+  * allowing to see what repo is being used for sneaky-pete
+  * fix the guest expection what is the latest sneaky version?
+  * fixed a race condition in the tests making fixes all around from the
+    PR fixed the unit test that was invalid
+  * changed the sneaky-pete repo back to hub-cab
+  * fixed the sneaky-pete repo. no need to change branches
+
+  [ Craig ]
+  * Update integration/vagrant/reddwarf-ci
+
+  [ Tim Simpson ]
+  * Removed the Version header generation from reddwarf-ci since Sneaky
+    Pete does that itself now.
+  * Changed status code returned when the volume size passed to resize
+    instance from 400 to 413. * Added "OverLimit" exception class to the
+    reddwarf.exception module.
+  * Tracking down a bug. * Changed instance_actions.py tests a bit. *
+    Added Checker class to have multiple asserts in a function and see
+    every single failure rather than just the first one.
+
+  [ vagrant ]
+
+ -- vagrant <vagrant@vagrant>  Thu, 01 Mar 2012 10:13:17 -0600
+
+nova (1.0.0-131-GENERIC~1.gbp59c264) UNRELEASED; urgency=low
+
+  ** SNAPSHOT build @59c26416d05df075ab1e14bb44099bd87ca63008 **
+
+  * UNRELEASED
+
+ -- vagrant <vagrant@vagrant>  Thu, 23 Feb 2012 13:39:51 -0600
+
 nova (1.0.0-GENERIC~1.gbp59c264) UNRELEASED; urgency=low
 
   ** SNAPSHOT build @59c26416d05df075ab1e14bb44099bd87ca63008 **
