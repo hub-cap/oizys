@@ -44,7 +44,7 @@ if [ $2 == "all" ] || [ $2 == "guest" ]
 then 
     echo "Packaging Nova Guest"
     vagrant_ssh sh /vagrant/package_nova_guest.sh $1
-    vagrant_ssh mv /home/vagrant/guest/guest_debs.tgz /vagrant
+    vagrant_ssh mv /home/vagrant/guest/src/guest_debs.tgz /vagrant
 fi
 
 if [ $2 == "all" ] || [ $2 == "swift" ]
