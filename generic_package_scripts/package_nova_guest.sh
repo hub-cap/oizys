@@ -4,9 +4,9 @@ rm -fr guest
 sudo rm -fr /home/vagrant/build
 mkdir -p guest
 cd guest
-git clone git://github.com/hub-cap/sneaky-pete.git src
+git clone git://github.com/rackspace/reddwarf.git src
 # git clone git://github.com/hub-cap/nova-temp-package-files.git packagefiles
-cd src/
+cd src/reddwarf-guest/
 sudo sh vagrant/initialize.sh
 mv debian debian.bak
 cp -R /vagrant/nova_guest_diablo_scripts debian
