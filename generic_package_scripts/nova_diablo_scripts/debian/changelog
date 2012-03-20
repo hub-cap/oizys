@@ -1,3 +1,22 @@
+nova (1.0.1-139-GENERIC~1.gbp3cea4e) UNRELEASED; urgency=low
+
+  ** SNAPSHOT build @3cea4e4a2ad817047e172226788e1f0db5896870 **
+
+  [ Nirmal Ranganathan ]
+  * Remove single database name attribute from create user call
+  * Modify create instance cal to optionally pass in user details
+
+  [ Tim Simpson ]
+  * Fixed a small bug in the integration tests.
+
+  [ Mike Asthalter ]
+  * update devguide to fix exs. for db instances, add API call Resize
+    Volume Instance
+
+  [ vagrant ]
+
+ -- vagrant <vagrant@vagrant>  Tue, 20 Mar 2012 11:17:45 -0500
+
 nova (1.0.0-137-GENERIC~1.gbpa782ac) UNRELEASED; urgency=low
 
   ** SNAPSHOT build @a782ac099a683bab9765446b4b87a38270d08725 **
