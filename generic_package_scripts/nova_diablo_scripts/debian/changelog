@@ -1,3 +1,50 @@
+nova (1.0.1-144-GENERIC~1.gbpb70c7b) UNRELEASED; urgency=low
+
+  ** SNAPSHOT build @b70c7b5707e7b9812fb20677520b31b2ea56cfda **
+
+  [ Ed Cranford ]
+  * Adding an integration test to make sure every instance the mgmt
+    index returns has exactly one IP.
+
+  [ Nirmal Ranganathan ]
+  * Fixing create instance xml, to allow to create users too
+  * Listing associated databases for users
+
+  [ Sudarshan Acharya ]
+  * Fix to return HTTP 202 header only for Accepted requests.
+  * Removing the related unused imports
+  * Updated tests for checking empty body on 202 statuses
+
+  [ Ed Cranford ]
+  * Adding examples for mgmt index calls, now using the deleted flag.
+  * Fixed the way I was conveying the GET query in the examples.
+  * Fixed example_gen so it shows the query data in requests, and fixed
+    the mgmt instance index requests.
+  * More verbose with the index calls. JSON seems to be adding extra
+    whitespace after commas in its dumps, probably due to its default
+    separators.
+
+  [ Mike Asthalter ]
+  * completed first-pass updates for Sprint 19
+
+  [ Craig Vyvial ]
+  * Adding logging around authorization
+
+  [ Daniel Salinas ]
+  * fixed up the methods that build returned links to force https for
+    reddwarf fixed up CI tests for forced ssl hrefs
+
+  [ Nirmal Ranganathan ]
+  * Adding 'used' information for volumes, for the space currently used
+    up
+
+  [ Daniel Salinas ]
+  * remove debug print statements
+
+  [ vagrant ]
+
+ -- vagrant <vagrant@vagrant>  Tue, 27 Mar 2012 10:32:59 -0500
+
 nova (1.0.1-143-GENERIC~1.gbp3cea4e) UNRELEASED; urgency=low
 
   ** SNAPSHOT build @3cea4e4a2ad817047e172226788e1f0db5896870 **
