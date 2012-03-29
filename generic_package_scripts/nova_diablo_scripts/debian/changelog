@@ -1,3 +1,25 @@
+nova (1.0.1-145-GENERIC~1.gbp9c54c9) UNRELEASED; urgency=low
+
+  ** SNAPSHOT build @9c54c935430e4bdee31e6b121f4f8e92b28c7e03 **
+
+  [ Nirmal Ranganathan ]
+  * Adding RESIZE status to the docs
+
+  [ Daniel Salinas ]
+  * changed default from None to empty list beginning unittests unittest
+    complete finished unittest coverage for _get_guest_info()
+
+  [ Sudarshan Acharya ]
+  * Allow volume to be deleted during error status.
+  * Syntatic sugar
+
+  [ Nirmal Ranganathan ]
+  * Removing database list from get instance by id api call
+
+  [ vagrant ]
+
+ -- vagrant <vagrant@vagrant>  Thu, 29 Mar 2012 16:58:13 -0500
+
 nova (1.0.1-144-GENERIC~1.gbpb70c7b) UNRELEASED; urgency=low
 
   ** SNAPSHOT build @b70c7b5707e7b9812fb20677520b31b2ea56cfda **
