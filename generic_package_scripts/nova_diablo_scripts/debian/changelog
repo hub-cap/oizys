@@ -1,3 +1,18 @@
+nova (1.0.1-146-GENERIC~1.gbp9fe05e) UNRELEASED; urgency=low
+
+  ** SNAPSHOT build @9fe05efe8ee67b2bb2b2f66fe2925abd5554064f **
+
+  [ Nirmal Ranganathan ]
+  * Increasing the metadata value limit from 255 to 5000 to allow for
+    more users to be created on instance create
+  * Moving the prepare call beftore the instance creation call to
+    prevent some race conditions.
+  * Updating a test hardcode db version
+
+  [ vagrant ]
+
+ -- vagrant <vagrant@vagrant>  Mon, 02 Apr 2012 16:58:24 -0500
+
 nova (1.0.1-145-GENERIC~1.gbp9c54c9) UNRELEASED; urgency=low
 
   ** SNAPSHOT build @9c54c935430e4bdee31e6b121f4f8e92b28c7e03 **
