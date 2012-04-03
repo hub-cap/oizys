@@ -1,0 +1,12 @@
+#!/bin/sh -e
+
+if [ "$1" = "configure" ]; then
+    if ! getent passwd nova > /dev/null 2>&1; then
+        adduser --system --home /var/lib/nova --no-create-home --shell /bin/bash nova
+    fi
+    chown -R nova:root /etc/nova
+    chmod 0440 /etc/nova/guest.conf
+fi
+
+#DEBHELPER#
+
