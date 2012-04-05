@@ -1,3 +1,38 @@
+nova (1.0.1-147-GENERIC~1.gbpd9e9ee) UNRELEASED; urgency=low
+
+  ** SNAPSHOT build @d9e9ee72d1a1c8667bd6ab872924a6860043b990 **
+
+  [ Nirmal Ranganathan ]
+  * Revert "Throttling the ssh connections using pools" This reverts
+    commit c1d52aa2a547c9a22f9a08f149afba064239855a.
+
+  [ Craig Vyvial ]
+  * adding a test to verify that the dns is using the correct auth
+    token. DNS auth token is updated in the request and added tests to
+    verify that the auth token is changed.
+
+  [ Tim Simpson ]
+  * Attempting to fix the DNS re-auth error.
+
+  [ Nirmal Ranganathan ]
+  * Adding a sleep before the volume failure tests to prevent a
+    heisenbug
+
+  [ Michael Basnight ]
+  * Removed the project id references from the examples and docs.
+    Conflicts:  apidocs/src/resources/samples/db-mgmt-instance-index-
+    request.json  apidocs/src/resources/samples/db-mgmt-instance-index-
+    request.xml  apidocs/src/resources/samples/db-mgmt-instance-index-
+    response.json  apidocs/src/resources/samples/db-mgmt-instance-index-
+    response.xml
+
+  [ Nirmal Ranganathan ]
+  * Removing X_AUTH_PROJECT_ID header requirement
+
+  [ vagrant ]
+
+ -- vagrant <vagrant@vagrant>  Thu, 05 Apr 2012 14:29:56 -0500
+
 nova (1.0.1-146-GENERIC~1.gbp9fe05e) UNRELEASED; urgency=low
 
   ** SNAPSHOT build @9fe05efe8ee67b2bb2b2f66fe2925abd5554064f **
