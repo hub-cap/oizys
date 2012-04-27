@@ -1,3 +1,42 @@
+nova (1.0.1-148-GENERIC~1.gbp467585) UNRELEASED; urgency=low
+
+  ** SNAPSHOT build @4675857523cd181ba249492f1f2bde43d99e9510 **
+
+  [ Daniel Salinas ]
+  * add error checking to see if the container is locked and fail a
+    little more friendly than usual changed exception handling to use
+    nova specific traceback object attempt to fix exception crud when a
+    command fails to exec modified ProcessExecutionError to return a
+    usable dict changed exception return to json marshaled dict added
+    json.dumps to actually do what the last commit says it does fixed
+    tests for stop() and added a test for the locked instance code path
+    fix test to pass the right error mock around
+
+  [ Nirmal Ranganathan ]
+  * Updating root create to revoke FILE perms.  - disabling local-infile
+    - updating reddwarf-config on guest upgrade
+  * Moving packging out of sneaky and updating the CI to use the
+    standard packages
+  * Sneaky changes for updating the configs during self update
+
+  [ Mike Asthalter ]
+  * final doc updates for EAP; combined 1 section and added 2 new ones
+    to Getting Started
+
+  [ Sudarshan Acharya ]
+  * mgmt api: no volume used size returned in the management instance
+    get call
+
+  [ Mike Asthalter ]
+  * final DB doc updates for EAP
+
+  [ Nirmal Ranganathan ]
+  * Fixing a hanging test
+
+  [ vagrant ]
+
+ -- vagrant <vagrant@vagrant>  Fri, 27 Apr 2012 17:08:02 -0500
+
 nova (1.0.1-147-GENERIC~1.gbpd9e9ee) UNRELEASED; urgency=low
 
   ** SNAPSHOT build @d9e9ee72d1a1c8667bd6ab872924a6860043b990 **
